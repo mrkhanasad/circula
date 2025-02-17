@@ -3,15 +3,17 @@ import { test, expect } from '@playwright/test';
 import { signUp } from '../actions/signUp';
 
 test('Signup flow', async ({ page }) => {
-  await signUp(page, 'Germany');
+  let signUpEmail = await signUp(page, 'Germany');
+  console.log(signUpEmail);
 });
 
-test('get started link', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-
-  // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
-
-  // Expects page to have a heading with the name of Installation.
-  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+test('Select Sweden from the country list', async ({ page }) => {
+  let signUpEmail = await signUp(page, 'Sweden');
+  console.log(signUpEmail);
 });
+
+test('Select United States from the country list', async ({ page }) => {
+  let signUpEmail = await signUp(page, 'United States');
+  console.log(signUpEmail);
+});
+

@@ -21,7 +21,9 @@ export async function signUp(page, country) {
     await page.click(selectors.submitOption('Next step'));
     await page.fill(selectors.companyNameInput, companyName)
     await page.click(selectors.countrySelection)
-    await page.click(selectors.countryOption(country));
+    const countryOption = page.locator(selectors.countryOption(country));
+    await countryOption.scrollIntoViewIfNeeded();
+    await page.fill(selectors.countrySelection, country);
     await page.click(selectors.hdyhau)
     await page.click('[role="menuitemradio"]:has-text("DATEV")');
     await page.click(selectors.submitOption('Create an account'));
